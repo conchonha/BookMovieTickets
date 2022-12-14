@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/fragmentHome"
+        android:icon="@drawable/ic_home"
+        android:title="@string/lbl_home" />
+
+    <item
+        android:id="@+id/fragmentCinema"
+        android:icon="@drawable/ic_action_friends"
+        android:title="@string/lbl_cinema" />
+
+    <item
+        android:id="@+id/fragmentTicket"
+        android:icon="@drawable/ic_notification"
+        android:title="@string/lbl_ticket" />
+
+    <item
+        android:id="@+id/fragmentSetting"
+        android:icon="@drawable/ic_settings"
+        android:title="@string/lbl_setting" />
+</menu>

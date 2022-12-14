@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="androidx.core.content.ContextCompat"/>
+        <variable
+            name="src"
+            type="Integer" />
+    </data>
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:layout_width="match_parent"
+        app:riv_mutate_background="true"
+        app:riv_corner_radius="@dimen/_10sdp"
+        android:scaleType="fitXY"
+        android:src="@{ContextCompat.getDrawable(context,src)}"
+        android:layout_height="match_parent">
+
+    </com.makeramen.roundedimageview.RoundedImageView>
+</layout>

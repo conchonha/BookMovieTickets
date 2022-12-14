@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_300dp">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsingToolbarLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    app:expandedTitleGravity="center|top"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:title="Sang Thai">
+
+                    <ImageView
+                        android:id="@+id/menuDrawable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_15dp"
+                        android:contentDescription="@string/lbl_icon_menu"
+                        android:src="@drawable/ic_menu_24"
+                        app:layout_collapseMode="pin" />
+
+                    <include
+                        android:id="@+id/toolbar"
+                        layout="@layout/layout_toolbar" />
+
+                    <RelativeLayout
+                        android:id="@+id/relativeLayout"
+                        android:layout_width="match_parent"
+                        android:background="@color/colorPrimary"
+                        android:layout_height="@dimen/_300dp">
+
+                        <!--                        <androidx.fragment.app.FragmentContainerView-->
+                        <!--                            android:id="@+id/fragmentBanner"-->
+                        <!--                            android:name="com.nhom3.appdulich.ui.fragment.home.BannerFragment"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="@dimen/_270dp" />-->
+
+                        <!--                        <androidx.recyclerview.widget.RecyclerView-->
+                        <!--                            android:id="@+id/recyclerviewMenuTop"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="@dimen/_60dp"-->
+                        <!--                            android:layout_alignParentBottom="true"-->
+                        <!--                            android:layout_marginStart="@dimen/_50dp"-->
+                        <!--                            android:layout_marginEnd="@dimen/_50dp"-->
+                        <!--                            android:background="@drawable/background_menu_top"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:paddingTop="@dimen/_5dp"-->
+                        <!--                            android:scrollbars="none"-->
+                        <!--                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+                    </RelativeLayout>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:id="@+id/linerLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <!--                    <androidx.fragment.app.FragmentContainerView-->
+                    <!--                        android:id="@+id/fragmentUtilities"-->
+                    <!--                        android:name="com.nhom3.appdulich.ui.fragment.home.FragmentUtilities"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="match_parent" />-->
+
+                    <!--                    <androidx.fragment.app.FragmentContainerView-->
+                    <!--                        android:id="@+id/fragmentEvent"-->
+                    <!--                        android:name="com.nhom3.appdulich.ui.fragment.home.FragmentEvent"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="match_parent" />-->
+
+                    <!--                    <androidx.fragment.app.FragmentContainerView-->
+                    <!--                        android:id="@+id/fragmentPlace"-->
+                    <!--                        android:name="com.nhom3.appdulich.ui.fragment.home.FragmentPlace"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="match_parent" />-->
+
+                    <!--                    <androidx.fragment.app.FragmentContainerView-->
+                    <!--                        android:id="@+id/fragmentImage"-->
+                    <!--                        android:name="com.nhom3.appdulich.ui.fragment.home.FragmentImage"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_marginBottom="@dimen/_200dp"-->
+                    <!--                        android:layout_height="match_parent" />-->
+
+                </LinearLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationDrawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/header_home"
+            app:menu="@menu/menu_navigation_drawable" />
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>

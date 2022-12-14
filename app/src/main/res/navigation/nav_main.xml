@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/fragmentHome">
+
+    <fragment
+        android:id="@+id/fragmentBookTicket"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.bookticket.FragmentBookTicket"
+        android:label="FragmentBookTicket" />
+    <fragment
+        android:id="@+id/fragmentBottomNavigation"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.FragmentBottomNavigation"
+        android:label="FragmentBottomNavigation" />
+    <fragment
+        android:id="@+id/fragmentCinema"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.cinema.FragmentCinema"
+        android:label="FragmentCinema" />
+    <fragment
+        android:id="@+id/fragmentHome"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.home.FragmentHome"
+        android:label="FragmentHome" />
+    <fragment
+        android:id="@+id/fragmentSetting"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.setting.FragmentSetting"
+        android:label="FragmentSetting" />
+    <fragment
+        android:id="@+id/fragmentTicket"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.ticket.FragmentTicket"
+        android:label="FragmentTicket" />
+</navigation>

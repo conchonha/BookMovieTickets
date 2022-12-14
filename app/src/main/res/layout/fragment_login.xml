@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="com.conchonha.bookmovietickets.viewmodel.AuthViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f2f2f2"
+        android:padding="@dimen/_30sdp">
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/movie_tickets_everyday"
+            android:textColor="#4d4d4d"
+            android:textSize="@dimen/_23sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:text="@string/manyAttractiveAenresƯelcomeYou"
+            android:textColor="#777777"
+            android:textSize="@dimen/_12sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_25sdp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginBottom="@dimen/_20sdp"
+            app:layout_constraintTop_toBottomOf="@+id/txtContent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <com.rd.PageIndicatorView
+            android:id="@+id/pageIndicatorViewBanner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:piv_animationType="worm"
+            app:piv_dynamicCount="true"
+            app:piv_selectedColor="#003B58"
+            app:piv_unselectedColor="#C4C4C4"
+            app:piv_viewPager="@id/viewPager" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:gravity="bottom"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guideline">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                app:cardBackgroundColor="#003B58"
+                android:clickable="true"
+                android:onClick="@{()->vm.loginForm(true)}"
+                android:foreground="?attr/selectableItemBackgroundBorderless"
+                android:focusable="true"
+                android:layout_gravity="center"
+                app:cardCornerRadius="@dimen/_30dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:text="@string/continue_with_email"
+                    android:drawablePadding="@dimen/_7sdp"
+                    app:drawableLeftCompat="@drawable/ic_action_name" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_40sdp"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:paddingEnd="@dimen/_7sdp"
+                    android:onClick="@{()->vm.loginForm(true)}"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_login_google" />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:paddingLeft="@dimen/_2sdp"
+                    android:onClick="@{()->vm.loginForm(true)}"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_login_apple" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linerRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/youHaventAccount"
+                    android:textColor="#777777"
+                    android:textSize="@dimen/_12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="@{()->vm.loginForm(false)}"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:text="@string/signUp"
+                    android:textColor="#0B4FFF"
+                    android:textSize="@dimen/_12sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

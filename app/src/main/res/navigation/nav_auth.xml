@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/fragmentLogin">
+
+    <fragment
+        android:id="@+id/fragmentLogin"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.auth.FragmentLogin"
+        android:label="FragmentLogin" >
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentRegister"
+            app:destination="@id/fragmentFormAuth" />
+        <action
+            android:id="@+id/action_fragmentLogin_to_fragmentBottomNavigation2"
+            app:destination="@id/fragmentBottomNavigation2"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/fragmentLogin"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFormAuth"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.auth.FragmentForm"
+        android:label="FragmentRegister" >
+        <action
+            android:id="@+id/action_fragmentRegister_to_fragmentBottomNavigation2"
+            app:destination="@id/fragmentBottomNavigation2"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/fragmentFormAuth"/>
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentBottomNavigation2"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.FragmentBottomNavigation"
+        android:label="FragmentBottomNavigation" />
+</navigation>

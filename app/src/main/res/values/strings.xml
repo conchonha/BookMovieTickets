@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">FirebaseMessage</string>
+    <string name="lbl_icon_menu">icon_menu</string>
+    <string name="lbl_home">Home</string>
+    <string name="lbl_chat">Chat</string>
+    <string name="lbl_friend">Friends</string>
+    <string name="lbl_setting">Setting</string>
+    <string name="lbl_map">Map</string>
+    <string name="lbl_favorite_history">History</string>
+    <string name="lbl_search">Search</string>
+    <string name="lbl_image">Image</string>
+    <string name="lbl_about">About</string>
+    <string name="lbl_logout">Logout</string>
+    <string name="lbl_close">Close</string>
+    <string name="lbl_notification">Notification</string>
+    <string name="default_notification_channel_id">SangTB.notification.demo</string>
+    <string name="channel_description">Firebase messaging receive notification</string>
+    <string name="lbl_cinema">Cinema</string>
+    <string name="lbl_ticket">Tickets</string>
+    <string name="movie_tickets_everyday">Đặt Vé Mỗi Ngày</string>
+    <string name="manyAttractiveAenresƯelcomeYou">Nhiều thể loại hấp dẫn chào đón bạn</string>
+    <string name="youHaventAccount">Bạn không có tài khoản?</string>
+    <string name="signUp">Đăng Ký</string>
+    <string name="continue_with_email">Tiếp tục với email</string>
+    <string name="lbl_login">Login</string>
+    <string name="lbl_email">Email</string>
+    <string name="hint_email">Nhập email</string>
+    <string name="hint_password">Nhập mật khẩu</string>
+    <string name="password">Mật Khẩu</string>
+    <string name="for_got_password">Quên mật khẩu ?</string>
+    <string name="lbl_register">Đăng Ký</string>
+    <string name="phone">Số ĐT</string>
+    <string name="hint_phone">Nhập số điện thoại</string>
+    <string name="lbl_ok">Đồng ý</string>
+    <string name="lbl_dialog">Thông Báo</string>
+    <string name="account_is_not_valid_or_not_exit">Tài khoản không hợp lệ hoặc không tồn tại</string>
+</resources>
