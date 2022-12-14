@@ -28,4 +28,8 @@
         android:id="@+id/fragmentMap"
         android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.map.FragmentMap"
         android:label="fragmentMap" />
+    <fragment
+        android:id="@+id/fragmentWebView"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.webview.FragmentWebView"
+        android:label="FragmentWebView" />
 </navigation>

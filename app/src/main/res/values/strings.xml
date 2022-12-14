@@ -41,4 +41,5 @@
     <string name="lbl_permission">Vui lòng cung cấp quyền google service</string>
     <string name="MAP_API_KEY">AIzaSyA-9wbN8tfmS1DhvjeEhSOa6gYo8SwGw9Y</string>
     <string name="lbl_search_cenime">Tìm kiếm rạp phim</string>
+    <string name="lbl_directional">Điều hướng</string>
 </resources>

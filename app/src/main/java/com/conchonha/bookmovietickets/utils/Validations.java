@@ -2,6 +2,8 @@ package com.conchonha.bookmovietickets.utils;
 
 import android.content.Context;
 import android.location.LocationManager;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import java.lang.reflect.Array;
 import java.util.Objects;
@@ -72,5 +74,10 @@ public class Validations {
     public static Boolean checkGpsStatus(Context context) {
         LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+    }
+
+    public static void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getApplicationWindowToken(), 0);
     }
 }

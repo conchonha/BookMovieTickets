@@ -5,24 +5,32 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 
+import com.conchonha.bookmovietickets.database.callback.CallbackRoomDatabase;
+import com.conchonha.bookmovietickets.database.dao.CinemaDao;
 import com.conchonha.bookmovietickets.database.dao.UserDao;
+import com.conchonha.bookmovietickets.database.table.Cinema;
 import com.conchonha.bookmovietickets.database.table.User;
 
 //đây là annotation sẽ cho mình biết là sẽ có bao nhiêu bảng được tạo trong sqlite
-@Database(entities = {User.class,}, version = 2, exportSchema = true)
+@Database(entities = {User.class, Cinema.class}, version = 2, exportSchema = true)
+@TypeConverters(DatabaseConverter.class)
 public abstract class AppDatabase extends RoomDatabase {
     //đây là các abstract giúp cho công việc truy vấn trở lên dễ dàng hơn
     public abstract UserDao userDao();
+    public abstract CinemaDao cinemaDao();
 
     //thuộc tính với hàm này giúp mình lấy được instance của class này
     public static AppDatabase DATABASE_INSTANCE;
     public static AppDatabase getInstance(Context context){
+        AppDatabase finalAppDatabase = DATABASE_INSTANCE;
         if (DATABASE_INSTANCE == null){
             DATABASE_INSTANCE = Room.databaseBuilder(context,
                             AppDatabase.class,
                             "app_database")
                     .allowMainThreadQueries()
+                    .addCallback(new CallbackRoomDatabase())
                     .build();
         }
         return DATABASE_INSTANCE;

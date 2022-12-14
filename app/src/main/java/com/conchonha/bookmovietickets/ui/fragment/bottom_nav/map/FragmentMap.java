@@ -20,8 +20,11 @@ import androidx.annotation.Nullable;
 import androidx.lifecycle.MutableLiveData;
 
 import com.conchonha.bookmovietickets.R;
+import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.BaseFragment;
 import com.conchonha.bookmovietickets.databinding.FragmentMapBinding;
+import com.conchonha.bookmovietickets.ui.adapter.MapAdapter;
+import com.conchonha.bookmovietickets.ui.dialog.ShowButtonSheetDialogMap;
 import com.conchonha.bookmovietickets.utils.DialogUtils;
 import com.conchonha.bookmovietickets.utils.Validations;
 import com.conchonha.bookmovietickets.viewmodel.MapViewModel;
@@ -36,22 +39,26 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.Map;
 
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
+
 public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> implements OnMapReadyCallback {
     private FusedLocationProviderClient fusedLocationProviderClient;
-    private MutableLiveData<Boolean> visibleSearch = new MutableLiveData<>(false);
-    private  ActivityResultLauncher launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
+    private final MapAdapter adapter = new MapAdapter();
+    private ActivityResultLauncher launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
         checkGps();
     });
+
 
     private ActivityResultLauncher requestMultiplePermissions =
             registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
                 @Override
                 public void onActivityResult(Map<String, Boolean> result) {
-                    if(result.get(Manifest.permission.ACCESS_COARSE_LOCATION) == true){
+                    if (result.get(Manifest.permission.ACCESS_COARSE_LOCATION) == true) {
                         checkGps();
                         return;
                     }
-                    DialogUtils.showAlertDialog(requireActivity(),getString(R.string.lbl_permission),null);
+                    DialogUtils.showAlertDialog(requireActivity(), getString(R.string.lbl_permission), null);
                 }
             });
 
@@ -70,6 +77,12 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
         viewModel.map = googleMap;
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireContext());
         checkPermission();
+
+        googleMap.setOnMarkerClickListener(marker -> {
+            Validations.hideKeyboard(binding.getRoot());
+            viewModel.findCinemaFromMarker(marker);
+            return false;
+        });
     }
 
     @Override
@@ -77,9 +90,15 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
         super.onViewCreated(view, savedInstanceState);
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        binding.setVm(viewModel);
+        binding.recyclerMenu.setAdapter(adapter);
 
+        listener();
+    }
+
+    private void listener() {
         binding.cardBtnMap.setOnClickListener(view1 -> {
-            binding.setIsVisible(false);
+            viewModel.isVisible.postValue(false);
         });
 
         binding.cardLocation.setOnClickListener(view1 -> {
@@ -88,9 +107,18 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
         });
 
         binding.cardBtnSearch.setOnClickListener(view1 -> {
-            binding.setIsVisible(true);
+            viewModel.isVisible.postValue(true);
         });
 
+        viewModel.listCinema.observe(getViewLifecycleOwner(),value->{
+            adapter.updateItems(value,viewModel);
+        });
+
+        viewModel.showBottomSheet.observe(getViewLifecycleOwner(),value->{
+            if(value){
+                new ShowButtonSheetDialogMap().show(getChildFragmentManager(),FragmentMap.class.getName());
+            }
+        });
     }
 
     // check permission find location
@@ -100,7 +128,7 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
             checkGps();
             return;
         }
-       requestMultiplePermissions.launch(viewModel.permissions);
+        requestMultiplePermissions.launch(viewModel.permissions);
     }
 
     private void checkGps() {
@@ -120,7 +148,7 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
             @SuppressLint("MissingPermission")
             @Override
             public void onComplete(@NonNull Task<Location> task) {
-                if(task.isSuccessful()){
+                if (task.isSuccessful()) {
                     viewModel.findLocation(task.getResult());
                     return;
                 }

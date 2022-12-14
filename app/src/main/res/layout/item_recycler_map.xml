@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="cinema"
+            type="com.conchonha.bookmovietickets.database.table.Cinema" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/actionBarItemBackground"
+        app:cardCornerRadius="@dimen/_3dp"
+        android:layout_marginTop="@dimen/_5dp"
+        app:cardElevation="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:padding="@dimen/_5dp">
+
+            <ImageView
+                android:id="@+id/imgIconMenu"
+                android:layout_width="@dimen/_40dp"
+                android:layout_height="@dimen/_40dp"
+                android:layout_marginEnd="@dimen/_5dp"
+                android:background="@drawable/boder"
+                android:contentDescription="@string/lbl_icon_menu"
+                setImageUrl = "@{cinema.icon}"
+                android:padding="2dp"
+                android:scaleType="fitXY" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10dp"
+                    android:text="@{cinema.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#777777"
+                    android:layout_marginStart="@dimen/_10dp"
+                    android:text="@{cinema.description}"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:textSize="@dimen/_12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

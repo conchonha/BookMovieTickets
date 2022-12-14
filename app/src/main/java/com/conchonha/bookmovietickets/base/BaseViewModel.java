@@ -14,12 +14,15 @@ import com.conchonha.bookmovietickets.database.AppDatabase;
 import com.conchonha.bookmovietickets.utils.SingleLiveEvent;
 
 import io.reactivex.Completable;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 public abstract class BaseViewModel extends AndroidViewModel implements DefaultLifecycleObserver {
     private final DataAction _dataAction = new DataAction();
-    protected AppDatabase db = AppDatabase.getInstance(getApplication());
+    public AppDatabase db = AppDatabase.getInstance(getApplication());
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected final String TAG = this.getClass().getName();
     protected final SingleLiveEvent<DataAction> eventSender = new SingleLiveEvent<>();
@@ -29,7 +32,7 @@ public abstract class BaseViewModel extends AndroidViewModel implements DefaultL
         super(application);
     }
 
-    protected void onNavigate(int actionId, Bundle argument){
+    public void onNavigate(int actionId, Bundle argument){
         _dataAction.setActionId(actionId);
         _dataAction.setBundle(argument);
         _dataAction.setEventSender(DataAction.EventSender.ON_NAVIGATE);
@@ -63,6 +66,14 @@ public abstract class BaseViewModel extends AndroidViewModel implements DefaultL
         },error->{
             showAlertYesOption(error.getMessage());
         });
+        compositeDisposable.add(disposable);
+    }
+
+    protected <T>void queryRoomFlowable(Flowable<T> flowable, IActionQuery<T> actionQuery){
+        Disposable disposable = flowable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(actionQuery::onSuccess);
         compositeDisposable.add(disposable);
     }
 

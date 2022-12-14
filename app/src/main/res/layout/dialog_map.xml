@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="cinema"
+            type="com.conchonha.bookmovietickets.database.table.Cinema" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_150dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <TextView
+            android:layout_width="@dimen/_20dp"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10dp"
+            android:background="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10dp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="@{cinema.name}"
+            android:textSize="@dimen/_14sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:padding="@dimen/_10dp"
+            android:text="@{cinema.description}"
+            android:textSize="@dimen/_12sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/background" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btnDirection"
+            android:layout_width="@dimen/_200dp"
+            android:layout_height="@dimen/_35dp"
+            android:layout_gravity="center"
+            android:paddingVertical="5dp"
+            android:clickable="true"
+            android:layout_marginVertical="@dimen/_10dp"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/background"
+            app:cardCornerRadius="@dimen/_20dp"
+            app:cardElevation="4dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35dp"
+                android:layout_marginBottom="@dimen/_30dp"
+                android:gravity="center"
+                android:text="@string/lbl_directional"
+                android:textColor="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>
