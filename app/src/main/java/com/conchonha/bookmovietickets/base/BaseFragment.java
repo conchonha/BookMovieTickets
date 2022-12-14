@@ -51,19 +51,23 @@ public abstract class BaseFragment<VB extends ViewDataBinding,VM extends BaseVie
                         requireActivity().finish();
                         break;
                     case ON_NAVIGATE:
-                        Navigation.findNavController(requireView()).navigate(dataAction.getActionId(),dataAction.getBundle());
+                        navigation(dataAction.getActionId(),dataAction.getBundle());
                         break;
                     case SHOW_TOAST:
                         Toast.makeText(requireContext(),dataAction.getMessage(),Toast.LENGTH_LONG).show();
                         break;
                     case SHOW_ALERT_YES_OPTION:
-                        DialogUtils.showAlertDialog(requireActivity(),dataAction.getMessage());
+                        DialogUtils.showAlertDialog(requireActivity(),dataAction.getMessage(),null);
                         break;
                     default:
                         throw new IllegalStateException("No implement method: " + dataAction.getEventSender().ordinal());
                 }
             }
         });
+    }
+
+    protected void navigation(int actionId, Bundle bundle){
+        Navigation.findNavController(requireView()).navigate(actionId,bundle);
     }
 
     protected abstract int getLayout();

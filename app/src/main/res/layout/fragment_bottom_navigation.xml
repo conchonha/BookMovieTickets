@@ -30,7 +30,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_16dp"
-                android:background="@android:color/transparent"
+                app:labelVisibilityMode="labeled"
+                app:itemIconTint="@color/bottom_bar_color_change"
+                app:itemTextColor="@color/bottom_bar_color_change"
                 app:menu="@menu/menu_bottom_navigation" />
 
         </com.google.android.material.bottomappbar.BottomAppBar>
@@ -39,9 +41,9 @@
             android:id="@+id/fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/hFF0065"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ic_action_chat"
+            android:backgroundTint="#003B58"
+            android:contentDescription="@string/lbl_ticket"
+            android:src="@drawable/ic_book_ticket"
             app:layout_anchor="@id/bottomAppBar"
             app:tint="@color/white" />
 

@@ -4,8 +4,8 @@
     <string name="lbl_home">Home</string>
     <string name="lbl_chat">Chat</string>
     <string name="lbl_friend">Friends</string>
-    <string name="lbl_setting">Setting</string>
-    <string name="lbl_map">Map</string>
+    <string name="lbl_setting">Cài đặt</string>
+    <string name="lbl_map">Bản đồ</string>
     <string name="lbl_favorite_history">History</string>
     <string name="lbl_search">Search</string>
     <string name="lbl_image">Image</string>
@@ -15,7 +15,7 @@
     <string name="lbl_notification">Notification</string>
     <string name="default_notification_channel_id">SangTB.notification.demo</string>
     <string name="channel_description">Firebase messaging receive notification</string>
-    <string name="lbl_cinema">Cinema</string>
+    <string name="lbl_cinema">Rạp phim</string>
     <string name="lbl_ticket">Tickets</string>
     <string name="movie_tickets_everyday">Đặt Vé Mỗi Ngày</string>
     <string name="manyAttractiveAenresƯelcomeYou">Nhiều thể loại hấp dẫn chào đón bạn</string>
@@ -34,4 +34,11 @@
     <string name="lbl_ok">Đồng ý</string>
     <string name="lbl_dialog">Thông Báo</string>
     <string name="account_is_not_valid_or_not_exit">Tài khoản không hợp lệ hoặc không tồn tại</string>
+    <string name="value_is_not_valid">Giá trị không hợp lệ</string>
+    <string name="lbl_film">Phim</string>
+    <string name="lbl_my_location">Vị trí của tôi</string>
+    <string name="please_enable_gps">Vui lòng bật gps để sử dụng</string>
+    <string name="lbl_permission">Vui lòng cung cấp quyền google service</string>
+    <string name="MAP_API_KEY">AIzaSyA-9wbN8tfmS1DhvjeEhSOa6gYo8SwGw9Y</string>
+    <string name="lbl_search_cenime">Tìm kiếm rạp phim</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.conchonha.bookmovietickets.ui.fragment.bottom_nav;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import com.conchonha.bookmovietickets.R;
 import com.conchonha.bookmovietickets.base.BaseFragment;
 import com.conchonha.bookmovietickets.databinding.FragmentBottomNavigationBinding;
 import com.conchonha.bookmovietickets.viewmodel.HomeViewModel;
+import com.google.android.material.navigation.NavigationBarView;
 
 public class FragmentBottomNavigation extends BaseFragment<FragmentBottomNavigationBinding, HomeViewModel> {
 
@@ -24,6 +26,13 @@ public class FragmentBottomNavigation extends BaseFragment<FragmentBottomNavigat
 
         NavigationUI.setupWithNavController(binding.bottomNavigate, navController);
         binding.bottomNavigate.setBackground(null);
+        binding.bottomNavigate.setOnItemReselectedListener(item -> {
+            navController.popBackStack(item.getItemId(),  false);
+        });
+
+        binding.fab.setOnClickListener(view1 ->{
+            navController.navigate(R.id.fragmentBookTicket,null);
+        });
     }
 
     @Override

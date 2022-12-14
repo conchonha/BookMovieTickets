@@ -26,7 +26,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="background">#FF202125</color>
+    <color name="background">#003B58</color>
     <color name="h2CB252">#2CB252</color>
     <color name="h7C7C7C">#7C7C7C</color>
     <color name="colorRegular">#000000</color>
@@ -51,4 +51,6 @@
     <color name="hF5F5F5">#F5F5F5</color>
     <color name="hB8B8B8">#B8B8B8</color>
     <color name="hC4CDE0">#C4CDE0</color>
+    <color name="itemBackgroundTab">#003B58</color>
+    <color name="iconDefault">#333333</color>
 </resources>
