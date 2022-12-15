@@ -49,17 +49,13 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
         checkGps();
     });
 
-
     private ActivityResultLauncher requestMultiplePermissions =
-            registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), new ActivityResultCallback<Map<String, Boolean>>() {
-                @Override
-                public void onActivityResult(Map<String, Boolean> result) {
-                    if (result.get(Manifest.permission.ACCESS_COARSE_LOCATION) == true) {
-                        checkGps();
-                        return;
-                    }
-                    DialogUtils.showAlertDialog(requireActivity(), getString(R.string.lbl_permission), null);
+            registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+                if (result.get(Manifest.permission.ACCESS_COARSE_LOCATION) == true) {
+                    checkGps();
+                    return;
                 }
+                DialogUtils.showAlertDialog(requireActivity(), getString(R.string.lbl_permission), null);
             });
 
     @Override
@@ -144,19 +140,16 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
 
     @SuppressLint("MissingPermission")
     private void findLocation() {
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @SuppressLint("MissingPermission")
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                if (task.isSuccessful()) {
-                    viewModel.findLocation(task.getResult());
-                    return;
-                }
-
-                fusedLocationProviderClient.getCurrentLocation(105, new CancellationTokenSource().getToken()).addOnSuccessListener(location -> {
-                    viewModel.findLocation(location);
-                });
+        if(fusedLocationProviderClient == null) return;
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                viewModel.findLocation(task.getResult());
+                return;
             }
+
+            fusedLocationProviderClient.getCurrentLocation(105, new CancellationTokenSource().getToken()).addOnSuccessListener(location -> {
+                viewModel.findLocation(location);
+            });
         });
     }
 }

@@ -2,6 +2,7 @@ package com.conchonha.bookmovietickets.base;
 
 import android.app.Application;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -70,6 +71,7 @@ public abstract class BaseViewModel extends AndroidViewModel implements DefaultL
     }
 
     protected <T>void queryRoomFlowable(Flowable<T> flowable, IActionQuery<T> actionQuery){
+        Log.d(TAG, "queryRoomFlowable: ");
         Disposable disposable = flowable
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

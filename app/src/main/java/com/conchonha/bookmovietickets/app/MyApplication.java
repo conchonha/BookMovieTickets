@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.ViewModelProvider;
 
+import com.conchonha.bookmovietickets.database.AppDatabase;
 import com.conchonha.bookmovietickets.database.table.Cinema;
 
 
@@ -15,6 +16,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppDatabase.getInstance(this);
         factory = (ViewModelProvider.Factory) new ViewModelProvider.AndroidViewModelFactory(this);
     }
 }

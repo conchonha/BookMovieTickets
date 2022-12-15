@@ -13,6 +13,8 @@ import com.conchonha.bookmovietickets.database.dao.UserDao;
 import com.conchonha.bookmovietickets.database.table.Cinema;
 import com.conchonha.bookmovietickets.database.table.User;
 
+import kotlin.jvm.Volatile;
+
 //đây là annotation sẽ cho mình biết là sẽ có bao nhiêu bảng được tạo trong sqlite
 @Database(entities = {User.class, Cinema.class}, version = 2, exportSchema = true)
 @TypeConverters(DatabaseConverter.class)
@@ -22,6 +24,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract CinemaDao cinemaDao();
 
     //thuộc tính với hàm này giúp mình lấy được instance của class này
+    @Volatile
     public static AppDatabase DATABASE_INSTANCE;
     public static AppDatabase getInstance(Context context){
         AppDatabase finalAppDatabase = DATABASE_INSTANCE;

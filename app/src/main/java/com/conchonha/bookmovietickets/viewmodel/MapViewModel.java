@@ -68,12 +68,18 @@ public class MapViewModel extends BaseViewModel implements IActionAdapterRecycle
     }
 
     public void findLocation(Location location) {
-        Cinema cinema = new Cinema(
-                location.getLatitude(), location.getLongitude(),
-                getString(R.string.lbl_my_location)
-        );
-        addMarker(cinema);
-        moveCamera(cinema);
+        try {
+            Cinema cinema = new Cinema(
+                    location.getLatitude(), location.getLongitude(),
+                    getString(R.string.lbl_my_location)
+            );
+            addMarker(cinema);
+            moveCamera(cinema);
+        }catch (Throwable throwable){
+            throwable.fillInStackTrace();
+            Log.d(TAG, "findLocation: "+throwable.getMessage());
+        }
+
     }
 
     private void addMarker(Cinema cinema) {
