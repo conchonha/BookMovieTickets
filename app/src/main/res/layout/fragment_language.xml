@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="com.conchonha.bookmovietickets.R"/>
+
+        <variable
+            name="vm"
+            type="com.conchonha.bookmovietickets.viewmodel.LanguageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="#FF202125"
+        android:padding="@dimen/_20dp"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/img_back"
+            android:src="@drawable/ic_back"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_language"
+            app:layout_constraintLeft_toRightOf="@+id/img_back"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginLeft="@dimen/_10dp"
+            android:textStyle="bold"
+            android:textSize="@dimen/_16sp"
+            android:textColor="@color/white" />
+
+        <include
+            android:id="@+id/itemEnglish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/item_language"
+            android:layout_marginTop="@dimen/_30sdp"
+            app:icon="@{R.drawable.ic_english}"
+            app:name="@{R.string.english}"
+            app:isCkecked="@{vm.isVietName}"
+            android:onClick="@{()->vm.onClickItemLanguage(1)}"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+        <include
+            android:id="@+id/itemVietNam"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/item_language"
+            android:layout_marginTop="@dimen/_10dp"
+            app:icon="@{R.drawable.ic_english}"
+            app:name="@{R.string.vietnam}"
+            app:isCkecked="@{vm.isEnglish}"
+            android:onClick="@{()->vm.onClickItemLanguage(0)}"
+            app:layout_constraintTop_toBottomOf="@+id/itemEnglish" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->vm.changeLanguage()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:src="@drawable/ic_done"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

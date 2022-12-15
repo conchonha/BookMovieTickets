@@ -42,4 +42,20 @@
     <string name="MAP_API_KEY">AIzaSyA-9wbN8tfmS1DhvjeEhSOa6gYo8SwGw9Y</string>
     <string name="lbl_search_cenime">Tìm kiếm rạp phim</string>
     <string name="lbl_directional">Điều hướng</string>
+    <string name="overview">Tổng quan</string>
+    <string name="notification">Thông báo</string>
+    <string name="display">Hiển thị</string>
+    <string name="default_system">Mặc định hệ thống</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="vietnam">Việt nam</string>
+    <string name="remove_cache">Xóa bộ nhớ cache</string>
+    <string name="hotline">Đường dây nóng</string>
+    <string name="hotline_phone">0366426402</string>
+    <string name="other">Khác</string>
+    <string name="version">Phiên bản</string>
+    <string name="share">Chia xẽ</string>
+    <string name="privacy">Bảo mật</string>
+    <string name="lbl_language">Ngôn ngữ</string>
+    <string name="english">English</string>
+    <string name="vietname">Việt Nam</string>
 </resources>

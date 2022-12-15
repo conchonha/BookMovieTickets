@@ -1,5 +1,7 @@
 package com.conchonha.bookmovietickets.base;
 
+import android.app.PendingIntent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,15 +17,24 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDeepLink;
+import androidx.navigation.NavDeepLinkRequest;
 import androidx.navigation.NavHostController;
 import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.conchonha.bookmovietickets.R;
 import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.data.DataAction;
+import com.conchonha.bookmovietickets.ui.fragment.bottom_nav.FragmentBottomNavigation;
 import com.conchonha.bookmovietickets.ui.page.MainActivity;
+import com.conchonha.bookmovietickets.utils.Const;
 import com.conchonha.bookmovietickets.utils.DialogUtils;
+import com.conchonha.bookmovietickets.utils.SharePrefs;
 import com.conchonha.bookmovietickets.utils.Validations;
+
+import java.util.Locale;
+import java.util.Objects;
 
 public abstract class BaseFragment<VB extends ViewDataBinding,VM extends BaseViewModel> extends Fragment {
     protected VB binding;
@@ -46,7 +57,7 @@ public abstract class BaseFragment<VB extends ViewDataBinding,VM extends BaseVie
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        binding.getRoot().setOnClickListener(Validations::hideKeyboard);
+        setup();
 
         viewModel.eventSender.observe(getViewLifecycleOwner(), new Observer<DataAction>() {
             @Override
@@ -65,11 +76,26 @@ public abstract class BaseFragment<VB extends ViewDataBinding,VM extends BaseVie
                     case SHOW_ALERT_YES_OPTION:
                         DialogUtils.showAlertDialog(requireActivity(),dataAction.getMessage(),null);
                         break;
+                    case ON_NAVIGATE_DEEPLINK:
+                        navigationDeepLink(dataAction.getUriDeepLink());
+                        break;
                     default:
                         throw new IllegalStateException("No implement method: " + dataAction.getEventSender().ordinal());
                 }
             }
         });
+    }
+
+    private void setup() {
+        if(getActivityMain() != null){
+            viewModel.iActivityAction = getActivityMain();
+        }
+        binding.getRoot().setOnClickListener(Validations::hideKeyboard);
+        String lg = new SharePrefs(getContext()).getSharedPref().getString(Const.KEY_LANGUAGE,"");
+        if(!Objects.equals(lg, "")){
+            setAppLocale(lg);
+            viewModel.setAppLocale(lg);
+        }
     }
 
     protected void navigation(int actionId, Bundle bundle){
@@ -87,5 +113,18 @@ public abstract class BaseFragment<VB extends ViewDataBinding,VM extends BaseVie
 
     protected NavController findNavHostController(){
         return Navigation.findNavController(binding.getRoot());
+    }
+
+    /** change multiple language */
+    private void setAppLocale(String language) {
+        Locale df = new Locale(language);
+        Locale.setDefault(df);
+        getResources().getConfiguration().setLocale(df);
+        getResources().updateConfiguration(getResources().getConfiguration(),getResources().getDisplayMetrics());
+    }
+
+    protected void navigationDeepLink(String uri){
+        FragmentBottomNavigation.navController.navigate(NavDeepLinkRequest.Builder
+                .fromUri(Uri.parse(uri)).build());
     }
 }

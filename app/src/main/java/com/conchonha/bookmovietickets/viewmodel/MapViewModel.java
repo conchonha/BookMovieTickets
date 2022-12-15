@@ -111,7 +111,7 @@ public class MapViewModel extends BaseViewModel implements IActionAdapterRecycle
     }
 
     @Override
-    public void onNavigate(Cinema data) {
+    public void onCheckedChange(Cinema data) {
 
     }
 

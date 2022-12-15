@@ -31,4 +31,10 @@
         android:id="@+id/fragmentBottomNavigation2"
         android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.FragmentBottomNavigation"
         android:label="FragmentBottomNavigation" />
+    <fragment
+        android:id="@+id/fragmentLanguage"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.language.FragmentLanguage"
+        android:label="FragmentLanguage" >
+        <deepLink app:uri="https://com.bookMovieTicket.start"/>
+    </fragment>
 </navigation>

@@ -16,13 +16,13 @@ import com.conchonha.bookmovietickets.viewmodel.HomeViewModel;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class FragmentBottomNavigation extends BaseFragment<FragmentBottomNavigationBinding, HomeViewModel> {
-
+    public static NavController navController;
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         NavHostFragment navHostFragment = (NavHostFragment) getChildFragmentManager().findFragmentById(R.id.fragmentContainerView);
         assert navHostFragment != null;
-        NavController navController = navHostFragment.getNavController();
+        navController = navHostFragment.getNavController();
 
         NavigationUI.setupWithNavController(binding.bottomNavigate, navController);
         binding.bottomNavigate.setBackground(null);
@@ -33,6 +33,10 @@ public class FragmentBottomNavigation extends BaseFragment<FragmentBottomNavigat
         binding.fab.setOnClickListener(view1 ->{
             navController.navigate(R.id.fragmentBookTicket,null);
         });
+    }
+
+    public void isVisibleBottomNav(boolean isVisible){
+        binding.bottomNavigate.setVisibility(isVisible? View.VISIBLE : View.GONE);
     }
 
     @Override

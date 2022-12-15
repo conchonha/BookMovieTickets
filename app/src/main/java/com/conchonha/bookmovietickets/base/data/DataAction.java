@@ -5,6 +5,7 @@ import android.os.Bundle;
 public class DataAction {
     private Bundle bundle;
     private int actionId;
+    private String uriDeepLink;
     private EventSender eventSender;
     private String message;
 
@@ -50,11 +51,20 @@ public class DataAction {
         this.message = message;
     }
 
+    public String getUriDeepLink() {
+        return uriDeepLink;
+    }
+
+    public void setUriDeepLink(String uriDeepLink) {
+        this.uriDeepLink = uriDeepLink;
+    }
+
     public enum EventSender {
         ON_NAVIGATE,
         SHOW_TOAST,
         ON_CLOSE,
-        SHOW_ALERT_YES_OPTION
+        SHOW_ALERT_YES_OPTION,
+        ON_NAVIGATE_DEEPLINK
     }
 }
 

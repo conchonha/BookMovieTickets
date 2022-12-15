@@ -8,7 +8,7 @@ import com.conchonha.bookmovietickets.base.BaseActivity;
 import com.conchonha.bookmovietickets.databinding.ActivityMainBinding;
 
 public class MainActivity extends BaseActivity<ActivityMainBinding> {
-
+    private NavController navController;
     @Override
     protected int getLayout() {
         return R.layout.activity_main;
@@ -16,7 +16,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> {
 
     @Override
     protected void onInit() {
-//        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerViewAuth);
-//        NavController navController = navHostFragment.getNavController();
+        NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerViewAuth);
+        navController = navHostFragment.getNavController();
+    }
+
+    @Override
+    public NavController getNavController() {
+        return navController;
     }
 }

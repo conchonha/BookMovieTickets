@@ -27,12 +27,10 @@ public abstract class AppDatabase extends RoomDatabase {
     @Volatile
     public static AppDatabase DATABASE_INSTANCE;
     public static AppDatabase getInstance(Context context){
-        AppDatabase finalAppDatabase = DATABASE_INSTANCE;
         if (DATABASE_INSTANCE == null){
             DATABASE_INSTANCE = Room.databaseBuilder(context,
                             AppDatabase.class,
                             "app_database")
-                    .allowMainThreadQueries()
                     .addCallback(new CallbackRoomDatabase())
                     .build();
         }
