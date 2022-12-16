@@ -8,7 +8,9 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.conchonha.bookmovietickets.database.callback.CallbackRoomDatabase;
+import com.conchonha.bookmovietickets.database.dao.CategoryDao;
 import com.conchonha.bookmovietickets.database.dao.CinemaDao;
+import com.conchonha.bookmovietickets.database.dao.FilmsDao;
 import com.conchonha.bookmovietickets.database.dao.UserDao;
 import com.conchonha.bookmovietickets.database.table.Category;
 import com.conchonha.bookmovietickets.database.table.Cinema;
@@ -24,7 +26,8 @@ public abstract class AppDatabase extends RoomDatabase {
     //đây là các abstract giúp cho công việc truy vấn trở lên dễ dàng hơn
     public abstract UserDao userDao();
     public abstract CinemaDao cinemaDao();
-    public abstract Category category();
+    public abstract CategoryDao categoryDao();
+    public abstract FilmsDao filmsDao();
 
     //thuộc tính với hàm này giúp mình lấy được instance của class này
     @Volatile

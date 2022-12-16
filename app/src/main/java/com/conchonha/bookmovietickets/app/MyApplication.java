@@ -37,6 +37,12 @@ public class MyApplication extends Application {
                     .insert(Arrays.asList(DumyData.listCinema))
                     .subscribeOn(Schedulers.io())
                     .subscribe();
+
+            AppDatabase.DATABASE_INSTANCE
+                    .categoryDao()
+                    .insert(Arrays.asList(DumyData.listCategory))
+                    .subscribeOn(Schedulers.io())
+                    .subscribe();
         }
         sharePrefs.put(KEY_FIRST_DATABASE,true);
     }

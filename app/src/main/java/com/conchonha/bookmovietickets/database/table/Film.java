@@ -1,7 +1,9 @@
 package com.conchonha.bookmovietickets.database.table;
 
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+@Entity
 public class Film {
     @PrimaryKey(autoGenerate = true)
     public int id;

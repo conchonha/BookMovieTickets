@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Category {
+    @PrimaryKey
     public int id;
     public String name;
     public Film[] films;
