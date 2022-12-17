@@ -1,6 +1,9 @@
 package com.conchonha.bookmovietickets.ui.adapter;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -10,6 +13,8 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 
+import com.bumptech.glide.load.engine.Resource;
+import com.conchonha.bookmovietickets.R;
 import com.conchonha.bookmovietickets.database.table.Category;
 import com.conchonha.bookmovietickets.database.table.Film;
 import com.conchonha.bookmovietickets.databinding.ItemRecyclerFilmBodyBinding;
@@ -46,29 +51,44 @@ public class AdapterRecyclerHome extends RecyclerView.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ItemRecyclerHomeBinding binding = ((ViewHolderItem) holder).binding;
         Category category = mListItem.get(position);
-        binding.txtTitle.setText("khẻkđjghdjjgvkfscnbkjdfnb ,mdfn lbdpkhbnfkl cvndfklbn ljdfvn");
+        binding.txtTitle.setText(category.name);
 
         binding.lineImage.removeAllViews();
         for (Film film : category.films){
             if(film.listSlide.length > 0){
                 ViewBinding viewBinding;
+                final int widthPixels = Resources.getSystem().getDisplayMetrics().widthPixels;
+                final int heightPixels = (int)(Resources.getSystem().getDisplayMetrics().heightPixels * 0.3);
+                LinearLayout.LayoutParams layoutParams = null;
+
                 if (getItemViewType(position) == TYPE.TYPE_HEADER.ordinal()) {
                     ItemRecyclerFilmHeaderBinding item = ItemRecyclerFilmHeaderBinding.inflate(LayoutInflater.from(holder.itemView.getContext()));
                     item.setSrc(film.listSlide[0]);
+                    layoutParams = new LinearLayout.LayoutParams((int) (widthPixels * 0.65),heightPixels);
                     viewBinding = item;
                 } else if (getItemViewType(position) == TYPE.TYPE_BODY.ordinal()) {
+                    layoutParams = new LinearLayout.LayoutParams((int) (widthPixels * 0.4),heightPixels);
                     ItemRecyclerFilmBodyBinding item = ItemRecyclerFilmBodyBinding.inflate(LayoutInflater.from(holder.itemView.getContext()));
                     item.setSrc(film.listSlide[0]);
+                    item.txtTitle.setText(film.name);
+                    item.txtProtagonist.setText(film.protagonist);
                     viewBinding = item;
                 } else {
                     ItemRecyclerFilmEndBinding item = ItemRecyclerFilmEndBinding.inflate(LayoutInflater.from(holder.itemView.getContext()));
+                    layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT);
                     item.setSrc(film.listSlide[0]);
+                    item.txtTitle.setText(film.name);
+                    item.txtContent.setText(film.protagonist);
+                    item.txtTime.setText(film.rate+"");
                     viewBinding = item;
+
+                    viewBinding.getRoot().setLayoutParams(layoutParams);
+                    binding.lineImage1.addView(viewBinding.getRoot());
+                    continue;
                 }
-//
-//                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(220,220);
-//                layoutParams.setMargins(15, 0, 15, 0);
-//                viewBinding.getRoot().setLayoutParams(layoutParams);
+
+                layoutParams.setMargins(0, 0, 15, 0);
+                viewBinding.getRoot().setLayoutParams(layoutParams);
                 binding.lineImage.addView(viewBinding.getRoot());
             }
         }

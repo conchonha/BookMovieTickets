@@ -18,7 +18,7 @@ public class MapAdapter extends BaseRecyclerViewAdapter<Cinema, ItemRecyclerMapB
     public void onBindViewHolder(@NonNull BaseViewHolder<ItemRecyclerMapBinding> holder, int position) {
         Cinema cinema = mListItem.get(position);
         holder.binding.setCinema(cinema);
-        holder.binding.getRoot().setOnClickListener(view -> {
+        holder.binding.linear.setOnClickListener(view -> {
             action.onClickListener(cinema);
         });
     }

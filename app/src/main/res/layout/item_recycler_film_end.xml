@@ -3,26 +3,78 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="src"
             type="String" />
     </data>
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/_250dp"
-        android:layout_marginEnd="@dimen/_15dp"
-        app:cardCornerRadius="@dimen/_4dp"
-        app:cardBackgroundColor="@color/white"
-        app:cardElevation="@dimen/_7dp"
-        android:layout_marginBottom="2dp"
-        android:layout_height="@dimen/_180dp">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:scaleType="fitXY"
-            app:setImageUrl="@{src}"
-            android:id="@+id/imgFilm"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless">
 
-    </androidx.cardview.widget.CardView>
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/roundImg"
+            android:layout_width="@dimen/_50dp"
+            android:layout_height="@dimen/_50dp"
+            android:layout_marginTop="@dimen/_14dp"
+            android:background="@color/background"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:setImageUrl="@{src}"
+            app:layout_constraintTop_toTopOf="parent"
+            app:riv_corner_radius="@dimen/_40dp"
+            app:riv_mutate_background="true" />
+
+        <LinearLayout
+            android:id="@+id/linearGroup"
+            android:layout_width="@dimen/_0dp"
+            android:layout_height="@dimen/_0dp"
+            android:layout_marginHorizontal="@dimen/_5dp"
+            android:orientation="vertical"
+            app:layout_constraintRight_toLeftOf="@+id/txtTime"
+            app:layout_constraintLeft_toRightOf="@+id/roundImg"
+            app:layout_constraintTop_toTopOf="@id/roundImg"
+            app:layout_constraintBottom_toBottomOf="@+id/roundImg">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sp" />
+
+            <TextView
+                android:id="@+id/txtContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="@dimen/_12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time"
+            android:gravity="center_vertical"
+            android:drawableEnd="@drawable/ic_rate"
+            android:layout_marginEnd="@dimen/_10dp"
+            android:textColor="#DC0C0C"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/roundImg" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="#AFB6C0"
+            app:layout_constraintTop_toBottomOf="@+id/linearGroup"
+            app:layout_constraintLeft_toLeftOf="@+id/linearGroup"
+            app:layout_constraintRight_toRightOf="@+id/txtTime"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

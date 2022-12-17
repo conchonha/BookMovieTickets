@@ -3,6 +3,9 @@ package com.conchonha.bookmovietickets.database.table;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 @Entity
 public class Cinema {
     @PrimaryKey(autoGenerate = true)
@@ -32,5 +35,18 @@ public class Cinema {
 
     public Cinema(){
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cinema cinema = (Cinema) o;
+        return lat.equals(cinema.lat) && lng.equals(cinema.lng) && name.equals(cinema.name) && Arrays.equals(listImageDetail, cinema.listImageDetail) && icon.equals(cinema.icon) && description.equals(cinema.description) && website.equals(cinema.website);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

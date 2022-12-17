@@ -10,8 +10,6 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20dp"
-        android:layout_marginStart="@dimen/_15dp"
         android:orientation="vertical">
 
         <TextView
@@ -19,7 +17,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="5dp"
+            android:layout_marginStart="@dimen/_10dp"
             android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_10dp"
             android:textSize="@dimen/_16sp"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -27,6 +27,7 @@
 
         <HorizontalScrollView
             android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_15dp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -34,5 +35,15 @@
                 android:id="@+id/lineImage"
                 android:orientation="horizontal" />
         </HorizontalScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_marginLeft="@dimen/_15dp"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lineImage1"
+                android:orientation="vertical" />
+        </ScrollView>
     </androidx.appcompat.widget.LinearLayoutCompat>
 </layout>

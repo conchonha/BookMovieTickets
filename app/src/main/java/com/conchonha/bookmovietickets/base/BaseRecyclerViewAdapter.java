@@ -19,11 +19,12 @@ public abstract class BaseRecyclerViewAdapter<T , VB extends ViewDataBinding> ex
     protected IActionAdapterRecycler<T> action;
 
     public void updateItems(List<T> list,IActionAdapterRecycler<T> action) {
-        BaseDiffCallBack<T> taskDiffCallBack = new BaseDiffCallBack<T>(list,mListItem);
-        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(taskDiffCallBack);
-        diffResult.dispatchUpdatesTo(this);
+//        BaseDiffCallBack<T> taskDiffCallBack = new BaseDiffCallBack<T>(list,mListItem);
+//        DiffUtil.DiffResult diffResult = DiffUtil.calculateDiff(taskDiffCallBack);
+//        diffResult.dispatchUpdatesTo(this);
         this.mListItem = list;
         this.action = action;
+        notifyDataSetChanged();
     }
 
     @Override
