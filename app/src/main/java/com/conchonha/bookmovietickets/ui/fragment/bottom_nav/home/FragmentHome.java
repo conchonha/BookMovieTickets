@@ -29,7 +29,7 @@ public class FragmentHome extends BaseFragment<FragmentHomeBinding, HomeViewMode
         super.onViewCreated(view, savedInstanceState);
         binding.recyclerHome.setAdapter(adapterRecyclerHome);
         viewModel.listItem.observe(getViewLifecycleOwner(),value->{
-            adapterRecyclerHome.updateItems(value,null);
+            adapterRecyclerHome.updateItems(value,viewModel);
         });
     }
 }

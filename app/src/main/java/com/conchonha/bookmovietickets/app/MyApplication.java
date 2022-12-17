@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.conchonha.bookmovietickets.database.AppDatabase;
 import com.conchonha.bookmovietickets.database.callback.DumyData;
 import com.conchonha.bookmovietickets.database.table.Cinema;
+import com.conchonha.bookmovietickets.database.table.Film;
 import com.conchonha.bookmovietickets.utils.SharePrefs;
 
 import java.util.Arrays;
@@ -19,6 +20,7 @@ public class MyApplication extends Application {
     public static Boolean isLogin = true;
     public static Cinema cinema;
     public static ViewModelProvider.Factory factory;
+    public static Film film;
 
     private final String KEY_FIRST_DATABASE = "KEY_FIRST_DATABASE";
     private SharePrefs sharePrefs;

@@ -58,4 +58,5 @@
     <string name="lbl_language">Ngôn ngữ</string>
     <string name="english">English</string>
     <string name="vietname">Việt Nam</string>
+    <string name="lbl_synopsis">Mo ta:</string>
 </resources>

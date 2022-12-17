@@ -15,6 +15,7 @@ import androidx.viewbinding.ViewBinding;
 
 import com.bumptech.glide.load.engine.Resource;
 import com.conchonha.bookmovietickets.R;
+import com.conchonha.bookmovietickets.base.interfaces.IActionAdapterRecycler;
 import com.conchonha.bookmovietickets.database.table.Category;
 import com.conchonha.bookmovietickets.database.table.Film;
 import com.conchonha.bookmovietickets.databinding.ItemRecyclerFilmBodyBinding;
@@ -27,6 +28,7 @@ import java.util.List;
 
 public class AdapterRecyclerHome extends RecyclerView.Adapter {
     private List<Category> mListItem = new ArrayList<>();
+    private IActionAdapterRecycler<Film>action;
 
     @Override
     public int getItemViewType(int position) {
@@ -83,12 +85,17 @@ public class AdapterRecyclerHome extends RecyclerView.Adapter {
                     viewBinding = item;
 
                     viewBinding.getRoot().setLayoutParams(layoutParams);
-                    binding.lineImage1.addView(viewBinding.getRoot());
-                    continue;
                 }
 
                 layoutParams.setMargins(0, 0, 15, 0);
                 viewBinding.getRoot().setLayoutParams(layoutParams);
+                viewBinding.getRoot().setOnClickListener(view -> {
+                    action.onClickListener(film);
+                });
+                if(getItemViewType(position) == TYPE.TYPE_END.ordinal()){
+                    binding.lineImage1.addView(viewBinding.getRoot());
+                    continue;
+                }
                 binding.lineImage.addView(viewBinding.getRoot());
             }
         }
@@ -100,8 +107,9 @@ public class AdapterRecyclerHome extends RecyclerView.Adapter {
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void updateItems(List<Category> value, Object o) {
+    public void updateItems(List<Category> value, IActionAdapterRecycler<Film> o) {
         mListItem = value;
+        action = o;
         notifyDataSetChanged();
     }
 

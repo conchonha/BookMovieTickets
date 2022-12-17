@@ -32,4 +32,8 @@
         android:id="@+id/fragmentWebView"
         android:name="com.conchonha.bookmovietickets.ui.fragment.webview.FragmentWebView"
         android:label="FragmentWebView" />
+    <fragment
+        android:id="@+id/fragmentDetail"
+        android:name="com.conchonha.bookmovietickets.ui.fragment.detail.FragmentDetail"
+        android:label="FragmentDetail" />
 </navigation>
