@@ -2,6 +2,7 @@ package com.conchonha.bookmovietickets.database.callback;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Pair;
 
 import com.conchonha.bookmovietickets.BuildConfig;
 import com.conchonha.bookmovietickets.R;
@@ -12,6 +13,9 @@ import com.conchonha.bookmovietickets.model.SettingDisplay;
 import com.conchonha.bookmovietickets.model.TypeDisplayUI;
 import com.conchonha.bookmovietickets.utils.Const;
 import com.conchonha.bookmovietickets.utils.SharePrefs;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class DumyData {
     public static Category[] listCategory = {
@@ -224,5 +228,14 @@ public class DumyData {
                 new SettingDisplay(R.string.version, TypeDisplayUI.TYPE_VERSION, R.color.colorStroke, BuildConfig.VERSION_NAME),
                 new SettingDisplay(R.string.share, TypeDisplayUI.TYPE_SHARE, R.color.colorStroke, ""),
                 new SettingDisplay(R.string.privacy, TypeDisplayUI.TYPE_PRIVACY, R.color.colorStroke, "")};
+    }
+
+    public static List<Pair<Integer,Boolean>> getListChair(String theaterName,Context context){
+        final SharePrefs sharePrefs = new SharePrefs(context);
+        List<Pair<Integer,Boolean>> listTmp = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            listTmp.add(new Pair(i, sharePrefs.getSharedPref().getBoolean(theaterName+i,false)));
+        }
+        return listTmp;
     }
 }

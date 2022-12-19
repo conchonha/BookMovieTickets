@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:paddingVertical="5dp"
             android:layout_marginStart="@dimen/_10dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/_10dp"
+            android:textColor="#fff"
+            android:layout_marginTop="@dimen/_25dp"
             android:textSize="@dimen/_16sp"
             android:textStyle="bold"
             android:textAllCaps="true"
@@ -28,6 +28,7 @@
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_marginLeft="@dimen/_15dp"
+            android:layout_marginTop="@dimen/_10dp"
             android:layout_height="wrap_content">
             <LinearLayout
                 android:layout_width="match_parent"

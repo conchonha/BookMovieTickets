@@ -93,6 +93,7 @@
                 android:focusable="true"
                 android:layout_marginHorizontal="@dimen/_5dp"
                 android:layout_gravity="center"
+                android:backgroundTint="@color/black"
                 app:cardCornerRadius="@dimen/_25dp">
                 <ImageView
                     android:id="@+id/imgLocation"

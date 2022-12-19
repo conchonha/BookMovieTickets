@@ -1,5 +1,6 @@
 package com.conchonha.bookmovietickets.ui.fragment.webview;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -36,9 +37,11 @@ public class FragmentWebView extends Fragment {
         return binding.getRoot();
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        binding.webView.getSettings().setJavaScriptEnabled(true);
         binding.webView.loadUrl(MyApplication.cinema.website);
 
         binding.imgBack.setOnClickListener(view1 -> {

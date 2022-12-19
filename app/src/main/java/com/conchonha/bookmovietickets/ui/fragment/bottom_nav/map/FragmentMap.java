@@ -33,6 +33,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.tasks.CancellationTokenSource;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -79,6 +80,11 @@ public class FragmentMap extends BaseFragment<FragmentMapBinding, MapViewModel> 
             viewModel.findCinemaFromMarker(marker);
             return false;
         });
+
+        googleMap.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                        requireContext(), R.raw.style_json));
+
     }
 
     @Override
