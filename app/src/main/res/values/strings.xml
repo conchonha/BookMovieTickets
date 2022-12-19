@@ -59,4 +59,7 @@
     <string name="english">English</string>
     <string name="vietname">Việt Nam</string>
     <string name="lbl_synopsis">Mo ta:</string>
+    <string name="hanhdong">Hành động</string>
+    <string name="ten_phim_1">John Wick: Chapter 4</string>
+    <string name="ngay">24/03/2023</string>
 </resources>

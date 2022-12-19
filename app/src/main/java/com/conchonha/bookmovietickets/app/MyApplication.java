@@ -42,7 +42,7 @@ public class MyApplication extends Application {
 
             AppDatabase.DATABASE_INSTANCE
                     .categoryDao()
-                    .insert(Arrays.asList(DumyData.listCategory))
+                    .insert(Arrays.asList(DumyData.getListCategory(getApplicationContext())))
                     .subscribeOn(Schedulers.io())
                     .subscribe();
         }
