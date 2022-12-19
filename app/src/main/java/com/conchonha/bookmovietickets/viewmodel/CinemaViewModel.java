@@ -39,6 +39,7 @@ public class CinemaViewModel extends BaseViewModel implements IActionAdapterRecy
     @Override
     public void onClickListener(Cinema data) {
         cinema.setValue(data);
+        listChair.setValue(DumyData.getListChair(data.name,getApplication()));
     }
 
     @Override

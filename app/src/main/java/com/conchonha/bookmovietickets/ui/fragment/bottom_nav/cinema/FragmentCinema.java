@@ -12,11 +12,13 @@ import com.conchonha.bookmovietickets.R;
 import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.BaseFragment;
 import com.conchonha.bookmovietickets.databinding.FragmentCinemaBinding;
+import com.conchonha.bookmovietickets.ui.adapter.AdapterChairCinema;
 import com.conchonha.bookmovietickets.ui.adapter.AdapterHeaderCinema;
 import com.conchonha.bookmovietickets.viewmodel.CinemaViewModel;
 
 public class FragmentCinema extends BaseFragment<FragmentCinemaBinding, CinemaViewModel> {
     private final AdapterHeaderCinema adapterHeaderCinema = new AdapterHeaderCinema();
+    private final AdapterChairCinema adapterChairCinema = new AdapterChairCinema();
     @Override
     protected Class<CinemaViewModel> getClassName() {
         return CinemaViewModel.class;
@@ -40,7 +42,7 @@ public class FragmentCinema extends BaseFragment<FragmentCinemaBinding, CinemaVi
         });
 
         viewModel.listChair.observe(getViewLifecycleOwner(),pairs -> {
-
+            adapterChairCinema.updateItems(pairs,null);
         });
 
         binding.txtWebsize.setOnClickListener(view -> {
@@ -53,5 +55,6 @@ public class FragmentCinema extends BaseFragment<FragmentCinemaBinding, CinemaVi
         binding.setVm(viewModel);
         binding.txtWebsize.setPaintFlags(binding.txtWebsize.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         binding.recyclerCinema.setAdapter(adapterHeaderCinema);
+        binding.recyclerChair.setAdapter(adapterChairCinema);
     }
 }
