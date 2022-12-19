@@ -26,6 +26,7 @@ public class DumyData {
                         new Film[]{
                                 /*ghi nhiều phim vào cho đẹp*/
                                 new Film(
+
                                         /*id phim*/ 0,
                                         /*id category ở trên*/ 0,
                                         /*Tên film*/ context.getString(R.string.ten_phim_1),
