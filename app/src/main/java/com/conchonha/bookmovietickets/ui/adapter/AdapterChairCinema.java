@@ -1,7 +1,6 @@
 package com.conchonha.bookmovietickets.ui.adapter;
 
 import android.util.Pair;
-
 import androidx.annotation.NonNull;
 
 import com.conchonha.bookmovietickets.R;

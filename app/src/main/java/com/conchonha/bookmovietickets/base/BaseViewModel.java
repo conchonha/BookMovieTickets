@@ -74,7 +74,7 @@ public abstract class BaseViewModel extends AndroidViewModel implements DefaultL
     }
 
     protected <T>void queryRoomCompletable(Completable comparable, IActionQuery<T> actionQuery){
-        Disposable disposable = comparable.subscribe(()->{
+        Disposable disposable = comparable.subscribeOn(Schedulers.io()).subscribe(()->{
             actionQuery.onSuccess(null);
         },error->{
             showAlertYesOption(error.getMessage());

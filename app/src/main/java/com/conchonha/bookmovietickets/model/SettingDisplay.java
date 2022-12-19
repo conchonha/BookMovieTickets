@@ -2,6 +2,7 @@ package com.conchonha.bookmovietickets.model;
 
 import java.util.Objects;
 
+//class define giusp display information on ui
 public class SettingDisplay {
     public int title;
     public  TypeDisplayUI typeDisplayUI;
