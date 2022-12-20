@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="#FF202125">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10dp">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" ABC"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=" xxsddds"
+                android:textColor="#94FFFFFF"
+                android:textSize="@dimen/_14sp"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
+
+            <ImageView
+                android:id="@+id/imgFilm"
+                android:layout_width="@dimen/_50dp"
+                android:layout_height="@dimen/_50dp"
+                android:layout_marginTop="@dimen/_7dp"
+                android:scaleType="fitXY"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+            <TextView
+                android:id="@+id/txtTitleFilm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:text="Phim abc"
+                android:textColor="@color/h2CB252"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toRightOf="@+id/imgFilm"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgFilm" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:text="Giá: 120000 x 3 = 450000"
+                android:textSize="@dimen/_12sp"
+                android:textColor="#94D60808"
+                app:layout_constraintLeft_toRightOf="@+id/imgFilm"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTitleFilm" />
+
+            <TextView
+                android:id="@+id/txtTime"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingHorizontal="@dimen/_10dp"
+                android:text="Giá: 120000 x 3 = 450000"
+                android:textSize="@dimen/_12sp"
+                android:textColor="#94FFFFFF"
+                app:layout_constraintLeft_toRightOf="@+id/imgFilm"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#94FFFFFF"
+                android:layout_marginTop="@dimen/_15dp"
+                app:layout_constraintTop_toBottomOf="@+id/txtTime" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
