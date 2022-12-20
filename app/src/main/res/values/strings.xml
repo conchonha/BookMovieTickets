@@ -62,4 +62,11 @@
     <string name="hanhdong">Hành động</string>
     <string name="ten_phim_1">John Wick: Chapter 4</string>
     <string name="ngay">24/03/2023</string>
+    <string name="please_choice_chair">Vui lòng chọn ghế</string>
+    <string name="register_success">Đăng ký thành công</string>
+    <string name="pay_success">Bạn đã thanh toán thành công</string>
+    <string name="price">Giá:= 75.000 * </string>
+    <string name="lbl_website">Trang chủ</string>
+    <string name="lbl_fanpage">Fanpage</string>
+    <string name="lbl_policy">Bảo mật</string>
 </resources>

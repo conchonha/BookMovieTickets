@@ -19,6 +19,7 @@ public class AdapterChairCinema extends BaseRecyclerViewAdapter<Pair<Integer,Boo
         Pair<Integer,Boolean> pair = mListItem.get(position);
         holder.binding.setIsChecked(pair.second);
         holder.itemView.setOnClickListener(view -> {
+            view.setBackgroundResource(R.drawable.ic_chair);
             action.onClickListener(pair);
         });
     }

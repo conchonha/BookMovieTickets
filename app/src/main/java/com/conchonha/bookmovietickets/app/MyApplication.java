@@ -1,7 +1,6 @@
 package com.conchonha.bookmovietickets.app;
 
 import android.app.Application;
-import android.content.SharedPreferences;
 
 import androidx.lifecycle.ViewModelProvider;
 
@@ -9,12 +8,11 @@ import com.conchonha.bookmovietickets.database.AppDatabase;
 import com.conchonha.bookmovietickets.database.callback.DumyData;
 import com.conchonha.bookmovietickets.database.table.Cinema;
 import com.conchonha.bookmovietickets.database.table.Film;
-import com.conchonha.bookmovietickets.model.Cart;
+import com.conchonha.bookmovietickets.database.table.Cart;
+import com.conchonha.bookmovietickets.database.table.User;
 import com.conchonha.bookmovietickets.utils.SharePrefs;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import io.reactivex.schedulers.Schedulers;
 
@@ -24,8 +22,9 @@ public class MyApplication extends Application {
     public static Cinema cinema;
     public static ViewModelProvider.Factory factory;
     public static Film film;
-    public static List<Cart> listCart = new ArrayList<>();
+    public static Cart cart;
     public static Boolean isBuyFilm = false;
+    public static User user;
 
 
     private final String KEY_FIRST_DATABASE = "KEY_FIRST_DATABASE";

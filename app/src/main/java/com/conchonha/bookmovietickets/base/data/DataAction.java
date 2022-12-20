@@ -64,7 +64,7 @@ public class DataAction {
         SHOW_TOAST,
         ON_CLOSE,
         SHOW_ALERT_YES_OPTION,
-        ON_NAVIGATE_DEEPLINK
+        BACK_SCREEN, ON_NAVIGATE_DEEPLINK
     }
 }
 

@@ -11,11 +11,14 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
-        android:layout_width="@dimen/_50dp"
+        android:layout_width="@dimen/_40dp"
+
         android:enabled = "@{!isChecked}"
         android:layout_marginLeft="@dimen/_13dp"
-        android:src="@{isChecked? @drawable/ic_chair_checked : @drawable/ic_chair}"
-        android:layout_height="@dimen/_50dp">
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
+        android:src="@{isChecked? @drawable/ic_chair_checked : @drawable/ic_chair_open}"
+        android:layout_height="@dimen/_40dp">
 
     </ImageView>
 </layout>

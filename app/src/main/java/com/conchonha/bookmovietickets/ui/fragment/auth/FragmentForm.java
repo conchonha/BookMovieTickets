@@ -7,9 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.conchonha.bookmovietickets.R;
-import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.BaseFragment;
-import com.conchonha.bookmovietickets.databinding.FragmentBookticketBinding;
 import com.conchonha.bookmovietickets.databinding.FragmentFormAuthBinding;
 import com.conchonha.bookmovietickets.viewmodel.AuthViewModel;
 

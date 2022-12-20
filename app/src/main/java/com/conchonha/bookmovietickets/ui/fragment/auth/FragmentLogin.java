@@ -9,13 +9,9 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.conchonha.bookmovietickets.R;
 import com.conchonha.bookmovietickets.base.BaseFragment;
-import com.conchonha.bookmovietickets.databinding.FragmentBookticketBinding;
 import com.conchonha.bookmovietickets.databinding.FragmentLoginBinding;
 import com.conchonha.bookmovietickets.ui.adapter.AdapterSlideLogin;
 import com.conchonha.bookmovietickets.viewmodel.AuthViewModel;
-import com.conchonha.bookmovietickets.viewmodel.BookTicketViewModel;
-
-import java.util.ArrayList;
 
 public class FragmentLogin extends BaseFragment<FragmentLoginBinding, AuthViewModel> {
     protected final AdapterSlideLogin adapterSlideLogin = new AdapterSlideLogin();

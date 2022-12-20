@@ -69,6 +69,11 @@ public abstract class BaseViewModel extends AndroidViewModel implements DefaultL
         eventSender.postValue(_dataAction);
     }
 
+    protected void backScreen(){
+        _dataAction.setEventSender(DataAction.EventSender.BACK_SCREEN);
+        eventSender.postValue(_dataAction);
+    }
+
     protected String getString(int message){
         return getApplication().getString(message);
     }
