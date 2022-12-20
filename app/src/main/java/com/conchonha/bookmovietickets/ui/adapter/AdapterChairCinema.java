@@ -16,6 +16,10 @@ public class AdapterChairCinema extends BaseRecyclerViewAdapter<Pair<Integer,Boo
 
     @Override
     public void onBindViewHolder(@NonNull BaseViewHolder<ItemRecyclerChairBinding> holder, int position) {
-        holder.binding.setIsChecked(mListItem.get(position).second);
+        Pair<Integer,Boolean> pair = mListItem.get(position);
+        holder.binding.setIsChecked(pair.second);
+        holder.itemView.setOnClickListener(view -> {
+            action.onClickListener(pair);
+        });
     }
 }

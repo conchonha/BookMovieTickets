@@ -8,10 +8,12 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 
+import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.BaseViewModel;
 import com.conchonha.bookmovietickets.base.interfaces.IActionAdapterRecycler;
 import com.conchonha.bookmovietickets.database.callback.DumyData;
 import com.conchonha.bookmovietickets.database.table.Cinema;
+import com.conchonha.bookmovietickets.model.Cart;
 
 import java.util.List;
 
@@ -19,6 +21,8 @@ public class CinemaViewModel extends BaseViewModel implements IActionAdapterRecy
     public final MutableLiveData<List<Cinema>> listCinema = new MutableLiveData<>();
     public final MutableLiveData<List<Pair<Integer,Boolean>>> listChair = new MutableLiveData<>();
     public final MutableLiveData<Cinema>cinema = new MutableLiveData<>();
+    public final MutableLiveData<Boolean> isBuyFilm = new MutableLiveData<>(MyApplication.isBuyFilm);
+    public final Cart cart = new Cart();
 
     public CinemaViewModel(@NonNull Application application) {
         super(application);
@@ -45,5 +49,17 @@ public class CinemaViewModel extends BaseViewModel implements IActionAdapterRecy
     @Override
     public void onCheckedChange(Cinema data) {
 
+    }
+
+    public void addDoneSaveSharePrefs(){
+        if(cart.listChair.size() > 0){
+            cart.cinema = cinema.getValue();
+            cart.film = MyApplication.film;
+
+            cart.listChair.forEach(integer -> {
+                sharePrefs.put(cart.cinema.name.trim()+integer,true);
+            });
+            MyApplication.listCart.add(cart);
+        }
     }
 }

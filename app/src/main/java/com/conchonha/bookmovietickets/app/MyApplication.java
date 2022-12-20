@@ -9,9 +9,12 @@ import com.conchonha.bookmovietickets.database.AppDatabase;
 import com.conchonha.bookmovietickets.database.callback.DumyData;
 import com.conchonha.bookmovietickets.database.table.Cinema;
 import com.conchonha.bookmovietickets.database.table.Film;
+import com.conchonha.bookmovietickets.model.Cart;
 import com.conchonha.bookmovietickets.utils.SharePrefs;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import io.reactivex.schedulers.Schedulers;
 
@@ -21,6 +24,9 @@ public class MyApplication extends Application {
     public static Cinema cinema;
     public static ViewModelProvider.Factory factory;
     public static Film film;
+    public static List<Cart> listCart = new ArrayList<>();
+    public static Boolean isBuyFilm = false;
+
 
     private final String KEY_FIRST_DATABASE = "KEY_FIRST_DATABASE";
     private SharePrefs sharePrefs;
@@ -32,8 +38,8 @@ public class MyApplication extends Application {
         factory = (ViewModelProvider.Factory) new ViewModelProvider.AndroidViewModelFactory(this);
 
         //đã có callback database room nhưng lười viết kiểu đó chơi như này cho nhanh
-        sharePrefs =  new SharePrefs(this);
-        if(!sharePrefs.getSharedPref().getBoolean(KEY_FIRST_DATABASE, false)){
+        sharePrefs = new SharePrefs(this);
+        if (!sharePrefs.getSharedPref().getBoolean(KEY_FIRST_DATABASE, false)) {
             AppDatabase.DATABASE_INSTANCE
                     .cinemaDao()
                     .insert(Arrays.asList(DumyData.listCinema))
@@ -46,7 +52,7 @@ public class MyApplication extends Application {
                     .subscribeOn(Schedulers.io())
                     .subscribe();
         }
-        sharePrefs.put(KEY_FIRST_DATABASE,true);
+        sharePrefs.put(KEY_FIRST_DATABASE, true);
     }
 }
 

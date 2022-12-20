@@ -2,6 +2,7 @@ package com.conchonha.bookmovietickets.database.callback;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.util.Pair;
 
 import com.conchonha.bookmovietickets.BuildConfig;
@@ -236,8 +237,8 @@ public class DumyData {
     public static List<Pair<Integer, Boolean>> getListChair(String theaterName, Context context) {
         final SharePrefs sharePrefs = new SharePrefs(context);
         List<Pair<Integer, Boolean>> listTmp = new ArrayList<>();
-        for (int i = 0; i < 20; i++) {
-            listTmp.add(new Pair(i, sharePrefs.getSharedPref().getBoolean(theaterName + i, false)));
+        for (int i = 0; i < 32; i++) {
+            listTmp.add(new Pair(i, sharePrefs.getSharedPref().getBoolean(theaterName.trim() + i, false)));
         }
         return listTmp;
     }

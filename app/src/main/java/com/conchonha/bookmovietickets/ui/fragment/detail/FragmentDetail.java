@@ -12,6 +12,8 @@ import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.BaseFragment;
 import com.conchonha.bookmovietickets.databinding.FragmentDetailBinding;
 import com.conchonha.bookmovietickets.ui.adapter.AdapterImageDetail;
+import com.conchonha.bookmovietickets.ui.fragment.bottom_nav.FragmentBottomNavigation;
+import com.conchonha.bookmovietickets.utils.Const;
 import com.conchonha.bookmovietickets.viewmodel.DetailFilmViewModel;
 
 import java.util.Arrays;
@@ -31,17 +33,23 @@ public class FragmentDetail extends BaseFragment<FragmentDetailBinding, DetailFi
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if(MyApplication.film != null)
-        binding.setFilm(MyApplication.film);
-        imageDetail.updateItems(Arrays.asList(MyApplication.film.listSlide),null);
-        binding.viewPager2.setAdapter(imageDetail);
+        if(MyApplication.film != null){
+            binding.setFilm(MyApplication.film);
+            imageDetail.updateItems(Arrays.asList(MyApplication.film.listSlide),null);
+            binding.viewPager2.setAdapter(imageDetail);
 
-        binding.viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                super.onPageSelected(position);
-                binding.pageIndicatorViewBanner.setSelection(position);
-            }
-        });
+            binding.viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+                @Override
+                public void onPageSelected(int position) {
+                    super.onPageSelected(position);
+                    binding.pageIndicatorViewBanner.setSelection(position);
+                }
+            });
+
+            binding.cart.setOnClickListener(view1 -> {
+               MyApplication.isBuyFilm = true;
+                viewModel.iActivityAction.getNavController().navigate(R.id.fragmentCinema2,null);
+            });
+        }
     }
 }

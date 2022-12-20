@@ -32,7 +32,7 @@ public abstract class BaseViewModel extends AndroidViewModel implements DefaultL
     private final CompositeDisposable compositeDisposable = new CompositeDisposable();
     protected final String TAG = this.getClass().getName();
     protected final SingleLiveEvent<DataAction> eventSender = new SingleLiveEvent<>();
-    protected IActivityAction iActivityAction;
+    public IActivityAction iActivityAction;
 
     public BaseViewModel(@NonNull Application application) {
         super(application);

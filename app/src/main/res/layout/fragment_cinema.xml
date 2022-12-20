@@ -4,76 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.conchonha.bookmovietickets.viewmodel.CinemaViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#FF202125"
-        android:paddingVertical="@dimen/_15dp"
-        android:paddingLeft="@dimen/_15dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtTitle"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FF202125"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/_15dp"
+            android:paddingLeft="@dimen/_15dp">
+
+            <TextView
+                android:id="@+id/txtTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{vm.cinema.name}"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15dp"
+                android:drawableLeft="@drawable/ic_location"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:text="@{vm.cinema.description}"
+                android:textColor="#BFFFFFFF"
+                android:textSize="@dimen/_16sp" />
+
+            <TextView
+                android:id="@+id/txtWebsize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15dp"
+                android:clickable="true"
+                android:drawableLeft="@drawable/ic_wb"
+                android:drawablePadding="5dp"
+                android:focusable="true"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="@{vm.cinema.website}"
+                android:textColor="@color/h2CB252"
+                android:textSize="@dimen/_16sp"
+                android:textStyle="italic" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerCinema"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60dp"
+                android:layout_marginVertical="@dimen/_20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerChair"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="bottom"
+                    android:foregroundGravity="center"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:spanCount="4" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fbDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{vm.cinema.name}"
-            android:textColor="@color/white"
-            android:maxLines="1"
-            android:ellipsize="end"
-            android:textSize="@dimen/_20sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15dp"
-            android:drawableLeft="@drawable/ic_location"
-            android:drawablePadding="5dp"
-            android:textColor="#BFFFFFFF"
-            android:gravity="center_vertical"
-            android:text="@{vm.cinema.description}"
-            android:textSize="@dimen/_16sp" />
-
-        <TextView
-            android:id="@+id/txtWebsize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15dp"
-            android:drawableLeft="@drawable/ic_wb"
-            android:drawablePadding="5dp"
-            android:textColor="@color/h2CB252"
-            android:textStyle="italic"
-            android:clickable="true"
-            android:focusable="true"
-            android:foreground="?attr/selectableItemBackground"
-            android:text="@{vm.cinema.website}"
-            android:textSize="@dimen/_16sp" />
-
-       <androidx.recyclerview.widget.RecyclerView
-           android:layout_width="match_parent"
-           android:layout_height="@dimen/_60dp"
-           android:orientation="horizontal"
-           android:layout_marginVertical="@dimen/_20dp"
-           app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-           android:id="@+id/recyclerCinema"/>
-
-       <androidx.constraintlayout.widget.ConstraintLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-           <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/recyclerChair"
-               android:layout_width="match_parent"
-               android:layout_height="match_parent"
-               android:orientation="vertical"
-               android:layout_gravity="bottom"
-               app:layout_constraintBottom_toBottomOf="parent"
-               app:spanCount="4"
-               app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
-       </androidx.constraintlayout.widget.ConstraintLayout>
-    </LinearLayout>
+            android:layout_margin="@dimen/_20dp"
+            android:background="@color/white"
+            android:src="@drawable/ic_done"
+            android:tint="@color/white"
+            android:onClick="@{()->vm.addDoneSaveSharePrefs()}"
+            android:visibility="@{!vm.isBuyFilm? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

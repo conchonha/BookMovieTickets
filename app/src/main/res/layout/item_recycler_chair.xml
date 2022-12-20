@@ -8,8 +8,13 @@
     </data>
 
     <ImageView
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:layout_width="@dimen/_50dp"
-        android:src="@{isChecked? @drawable/ic_chair_checked : @drawable/ic_chair_checked}"
+        android:enabled = "@{!isChecked}"
+        android:layout_marginLeft="@dimen/_13dp"
+        android:src="@{isChecked? @drawable/ic_chair_checked : @drawable/ic_chair}"
         android:layout_height="@dimen/_50dp">
 
     </ImageView>
