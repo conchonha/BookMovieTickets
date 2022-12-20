@@ -52,6 +52,7 @@ public class AuthViewModel extends BaseViewModel {
             final List<User> users = db.userDao().login(email.getValue(), pass.getValue());
             if (users.size() > 0) {
                 onNavigate(R.id.action_fragmentRegister_to_fragmentBottomNavigation2, null);
+                MyApplication.user = users.get(0);
                 return;
             }
             showAlertYesOption(getString(R.string.account_is_not_valid_or_not_exit));
@@ -60,7 +61,8 @@ public class AuthViewModel extends BaseViewModel {
 
         if (Validations.isRegister(email.getValue(), pass.getValue(), phone.getValue())) {
             queryRoomCompletable(db.userDao().insert(new User(pass.getValue(), phone.getValue(), email.getValue())), data -> {
-                onNavigate(R.id.action_fragmentRegister_to_fragmentBottomNavigation2,null);
+                showToast(getString(R.string.register_success));
+
             });
             return;
         }

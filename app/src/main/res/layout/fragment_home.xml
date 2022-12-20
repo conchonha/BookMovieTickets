@@ -25,7 +25,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            app:headerLayout="@layout/header_home"
             app:menu="@menu/menu_navigation_drawable" />
     </androidx.drawerlayout.widget.DrawerLayout>
 </layout>

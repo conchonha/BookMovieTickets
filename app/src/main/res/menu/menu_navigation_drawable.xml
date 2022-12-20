@@ -5,21 +5,17 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/fragmentMap"
+            android:id="@+id/map"
             android:icon="@drawable/ic_map"
             android:title="@string/lbl_map" />
         <item
-            android:id="@+id/fragmentFavorite"
+            android:id="@+id/favorite"
             android:icon="@drawable/ic_favorite"
             android:title="@string/lbl_favorite_history" />
         <item
-            android:id="@+id/fragmentSearch"
-            android:icon="@drawable/ic_search"
-            android:title="@string/lbl_search" />
-        <item
-            android:id="@+id/fragmentImageInside"
-            android:icon="@drawable/ic__image"
-            android:title="@string/lbl_image" />
+            android:id="@+id/fanpage"
+            android:icon="@drawable/ic_fanpage"
+            android:title="@string/lbl_fanpage" />
     </group>
 
     <group
@@ -27,11 +23,11 @@
         android:id="@+id/group_account"
      >
         <item
-            android:id="@+id/fragmentAbout"
+            android:id="@+id/policy"
             android:icon="@drawable/ic_about"
-            android:title="@string/lbl_about" />
+            android:title="@string/lbl_policy" />
         <item
-            android:id="@+id/fragmentSetting"
+            android:id="@+id/setting"
             android:icon="@drawable/ic_setting"
             android:title="@string/lbl_setting" />
     </group>

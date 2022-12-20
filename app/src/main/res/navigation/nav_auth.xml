@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_auth"
-    app:startDestination="@id/fragmentPay">
+    app:startDestination="@id/fragmentLogin">
 
     <fragment
         android:id="@+id/fragmentLogin"
@@ -30,7 +30,13 @@
     <fragment
         android:id="@+id/fragmentBottomNavigation2"
         android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.FragmentBottomNavigation"
-        android:label="FragmentBottomNavigation" />
+        android:label="FragmentBottomNavigation" >
+        <action
+            android:id="@+id/action_fragmentBottomNavigation2_to_fragmentLogin"
+            app:destination="@id/fragmentLogin"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/fragmentBottomNavigation2"/>
+    </fragment>
     <fragment
         android:id="@+id/fragmentLanguage"
         android:name="com.conchonha.bookmovietickets.ui.fragment.language.FragmentLanguage"
@@ -40,9 +46,27 @@
     <fragment
         android:id="@+id/fragmentPay"
         android:name="com.conchonha.bookmovietickets.ui.fragment.pay.FragmentPay"
-        android:label="FragmentPay" />
+        android:label="FragmentPay" >
+
+        <action
+            android:id="@+id/action_fragmentPay_to_fragmentBottomNavigation2"
+            app:destination="@id/fragmentBottomNavigation2"
+            app:popUpTo="@id/fragmentPay"
+            app:popUpToInclusive="true"/>
+    </fragment>
     <fragment
         android:id="@+id/fragmentCinema2"
         android:name="com.conchonha.bookmovietickets.ui.fragment.bottom_nav.cinema.FragmentCinema"
-        android:label="FragmentCinema" />
+        android:label="FragmentCinema" >
+        <action
+            android:id="@+id/action_fragmentCinema2_to_fragmentPay"
+            app:destination="@id/fragmentPay"
+        />
+        <action
+            android:id="@+id/action_fragmentCinema2_to_fragmentBottomNavigation2"
+            app:destination="@id/fragmentBottomNavigation2"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/fragmentCinema2"/>
+
+    </fragment>
 </navigation>

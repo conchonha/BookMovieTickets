@@ -16,6 +16,7 @@ public class BindingAdapterExt {
                 .error(R.drawable.ic_logo)
                 .into(imageView);
     }
+
 }
 
 

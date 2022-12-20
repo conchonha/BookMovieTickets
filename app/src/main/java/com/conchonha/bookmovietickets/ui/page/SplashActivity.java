@@ -25,5 +25,6 @@ public class SplashActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setTheme(R.style.Theme_BookMovieTickets);
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

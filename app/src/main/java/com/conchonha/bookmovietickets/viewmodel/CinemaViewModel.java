@@ -1,19 +1,19 @@
 package com.conchonha.bookmovietickets.viewmodel;
 
 import android.app.Application;
-import android.util.Log;
 import android.util.Pair;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.MutableLiveData;
 
+import com.conchonha.bookmovietickets.R;
 import com.conchonha.bookmovietickets.app.MyApplication;
 import com.conchonha.bookmovietickets.base.BaseViewModel;
 import com.conchonha.bookmovietickets.base.interfaces.IActionAdapterRecycler;
 import com.conchonha.bookmovietickets.database.callback.DumyData;
 import com.conchonha.bookmovietickets.database.table.Cinema;
-import com.conchonha.bookmovietickets.model.Cart;
+import com.conchonha.bookmovietickets.database.table.Cart;
 
 import java.util.List;
 
@@ -56,10 +56,10 @@ public class CinemaViewModel extends BaseViewModel implements IActionAdapterRecy
             cart.cinema = cinema.getValue();
             cart.film = MyApplication.film;
 
-            cart.listChair.forEach(integer -> {
-                sharePrefs.put(cart.cinema.name.trim()+integer,true);
-            });
-            MyApplication.listCart.add(cart);
+            MyApplication.cart = cart;
+            iActivityAction.getNavController().navigate(R.id.action_fragmentCinema2_to_fragmentPay);
+        }else{
+            showToast(getString(R.string.please_choice_chair));
         }
     }
 }

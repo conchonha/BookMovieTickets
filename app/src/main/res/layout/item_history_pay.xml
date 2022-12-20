@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="cart"
+            type="com.conchonha.bookmovietickets.database.table.Cart" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -20,7 +22,7 @@
                 android:id="@+id/txtTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" ABC"
+                android:text="@{cart.cinema.name}"
                 android:textAllCaps="true"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_18sp"
@@ -32,7 +34,7 @@
                 android:id="@+id/txtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" xxsddds"
+                android:text="@{cart.cinema.description}"
                 android:textColor="#94FFFFFF"
                 android:textSize="@dimen/_14sp"
                 app:layout_constraintTop_toBottomOf="@+id/txtTitle" />
@@ -53,7 +55,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/_10dp"
-                android:text="Phim abc"
+                android:text="@{cart.film.name}"
                 android:textColor="@color/h2CB252"
                 android:textSize="@dimen/_16sp"
                 android:textStyle="bold"
@@ -82,7 +84,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:paddingHorizontal="@dimen/_10dp"
-                android:text="Giá: 120000 x 3 = 450000"
+                android:text="@{cart.film.date}"
                 android:textSize="@dimen/_12sp"
                 android:textColor="#94FFFFFF"
                 app:layout_constraintLeft_toRightOf="@+id/imgFilm"

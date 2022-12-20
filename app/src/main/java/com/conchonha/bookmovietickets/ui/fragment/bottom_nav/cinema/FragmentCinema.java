@@ -6,6 +6,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.navigation.Navigation;
@@ -38,13 +39,12 @@ public class FragmentCinema extends BaseFragment<FragmentCinemaBinding, CinemaVi
         super.onViewCreated(view, savedInstanceState);
         initView();
         observer();
+        handleEvents();
     }
 
-    private void observer() {
-        viewModel.listCinema.observe(getViewLifecycleOwner(),cinemas -> {
-            adapterHeaderCinema.updateItems(cinemas,viewModel);
-        });
-
+    @Override
+    public void onResume() {
+        super.onResume();
         viewModel.listChair.observe(getViewLifecycleOwner(),pairs -> {
             adapterChairCinema.updateItems(pairs, new IActionAdapterRecycler<Pair<Integer, Boolean>>() {
                 @Override
@@ -60,6 +60,12 @@ public class FragmentCinema extends BaseFragment<FragmentCinemaBinding, CinemaVi
 
                 }
             });
+        });
+    }
+
+    private void observer() {
+        viewModel.listCinema.observe(getViewLifecycleOwner(),cinemas -> {
+            adapterHeaderCinema.updateItems(cinemas,viewModel);
         });
 
         binding.txtWebsize.setOnClickListener(view -> {
@@ -78,6 +84,26 @@ public class FragmentCinema extends BaseFragment<FragmentCinemaBinding, CinemaVi
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        if(!MyApplication.isBuyFilm){
+            MyApplication.cart = null;
+            MyApplication.film = null;
+            MyApplication.cinema = null;
+        }
+
         MyApplication.isBuyFilm = false;
+    }
+
+    private void handleEvents() {
+        getActivity().getOnBackPressedDispatcher().addCallback(
+                getViewLifecycleOwner(),
+                new OnBackPressedCallback(true) {
+                    @Override
+                    public void handleOnBackPressed() {
+                        if(MyApplication.isBuyFilm){
+                            navigation(R.id.action_fragmentCinema2_to_fragmentBottomNavigation2,null);
+                        }
+                    }
+                }
+        );
     }
 }
